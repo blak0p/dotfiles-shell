@@ -26,7 +26,7 @@ Part of the [dotfiles umbrella](https://github.com/blak0p/dotfiles).
 | `~/.config/atuin` | Shell history search (with FZF) |
 | `~/.config/carapace` | Multi-shell completions |
 | `~/.config/fastfetch` | System info on shell start |
-| `~/.config/kitty` | Kitty terminal emulator |
+| `~/.config/kitty` | Kitty terminal emulator (with native cursor trail) |
 
 Plus, the installer **creates** (not symlinks) `~/.config/fish.custom` on first run. See [fish.custom](#fishcustom--private-config).
 
@@ -122,7 +122,7 @@ The most common edits:
 - **Add an alias**: edit `fish/conf.d/aliases.fish`, then `source ~/.config/fish/config.fish` (or open a new shell)
 - **Add a function**: drop a `.fish` file in `fish/functions/`, fish autoloads it
 - **Change the prompt**: edit `fish/config.fish` (the starship init line) or `starship.toml` directly
-- **Change kitty theme**: edit `kitty/kitty.conf` or `kitty/theme.conf`
+- **Change kitty theme**: edit `kitty/kitty.conf`
 - **Change keybinds**: edit `fish/conf.d/zzz-custom-binds.fish`
 
 After editing `config.fish`:
