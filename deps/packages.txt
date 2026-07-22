@@ -1,0 +1,16 @@
+# Packages for the shell + terminal domain.
+# Consume with: pacman -S --needed - < deps/packages.txt
+
+fish
+kitty
+starship
+atuin
+carapace
+fastfetch
+
+# Fish helpers
+fisher
+fzf
+eza
+bat
+zoxide
