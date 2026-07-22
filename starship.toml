@@ -6,7 +6,7 @@
 # that keeps only the modules actually used here.
 #
 # Layout (left to right):
-#   <os>  <username>@  <directory>  <git_branch><git_status>  <cmd_duration>
+#   <username>@  <directory>  <git_branch><git_status>  <cmd_duration>
 #   <󱗞 >
 #
 # The 󱗞 character is a Nerd Font glyph (white heavy check mark). It
@@ -15,7 +15,6 @@
 # else.
 
 format = """
-$os\
 $username\
 $directory\
 $git_branch\
@@ -32,19 +31,9 @@ palette = "ii"
 success_symbol = "[󱗞 ](fg:green bold)"
 error_symbol = "[󱗞 ](fg:red bold)"
 
-# ─── OS (small icon, only on foreign systems) ──────────────────
+# ─── OS (disabled — uses Nerd Font glyphs that not all fonts have) ─
 [os]
-disabled = false
-format = "[$symbol]($style) "
-style = "fg:subtext1"
-
-[os.symbols]
-Arch = "󰣇"
-Debian = "󰣚"
-Fedora = "󰣛"
-Ubuntu = "󰣈"
-Macos = "󰀵"
-Linux = "󰌽"
+disabled = true
 
 # ─── Username (only on remote or non-default user) ──────────────
 [username]
