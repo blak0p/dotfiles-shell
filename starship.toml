@@ -1,84 +1,69 @@
-format = """\
-($directory)\
+# starship.toml — dotfiles-shell's prompt config
+#
+# Original upstream: https://starship.rs/preset/catppuccin-powerline
+# and the default 'pastel' style. Layout, module set, and color
+# palette are inspired by those presets; this file is a minimal
+# rewrite that keeps only the modules actually used here.
+#
+# Layout (left to right):
+#   <os>  <username>@  <directory>  <git_branch><git_status>  …  <time>
+#   <●>
+#
+# The ● character is a filled circle. Change to ○ (empty) or ◉
+# (with center dot) in the [character] section if you prefer a
+# different look.
+
+format = """
 $os\
+$username\
+$directory\
 $git_branch\
+$git_status\
 $fill\
-$nodejs\
-$rust\
-$golang\
-$php\
-$bun\
-$java\
-$c\
-$conda\
-$zig\
 $cmd_duration\
-$time\
-\n$character\
-"""
+$time
+\
+$character"""
 
 add_newline = true
-command_timeout = 3600000
+command_timeout = 1000
 palette = "ii"
 
-[fill]
-symbol = ' '
-
-[palettes.ii]
-# Basado en el scheme ii (violeta #c2c1ff)
-text = "#e5e1e7"          # onSurface
-subtext0 = "#918f9a"      # outline
-subtext1 = "#c8c5d1"      # onSurfaceVariant
-overlay0 = "#353438"      # surfaceContainerHighest
-overlay1 = "#2a292e"      # surfaceContainerHigh
-overlay2 = "#201f23"      # surfaceContainer
-surface0 = "#1c1b1f"      # surfaceContainerLow
-surface1 = "#131317"      # surface
-surface2 = "#0e0e12"      # surfaceContainerLowest
-base = "none"
-mantle = "#131317"
-crust = "#131317"
-
-# Colores funcionales
-blue = "#c2c1ff"          # primary (violeta)
-mauve = "#c2c1ff"         # primary
-purple = "#7171ac"        # primaryContainer
-lavender = "#c6c4e0"      # secondary
-pink = "#f5b2e0"          # tertiary
-green = "#b7cc85"         # success
-red = "#ffb4ab"           # error
-yellow = "#ffe066"        # warning
-peach = "#deba87"         # warm accent
-teal = "#7aa89f"          # cool accent
-rosewater = "#e5e1e7"     # onSurface
-flamingo = "#c8c5d1"      # onSurfaceVariant
-maroon = "#47464f"        # surfaceVariant
-sapphire = "#595992"      # inversePrimary
-sky = "#45455c"           # secondaryContainer
-
+# ─── Character ─────────────────────────────────────────────────
 [character]
-success_symbol = "[󱗞 ](fg:green)"
-error_symbol = "[󱗞 ](fg:red)"
-vimcmd_symbol = "[N](bold red)"
-vimcmd_replace_one_symbol = "[R](bold peach)"
-vimcmd_visual_symbol = "[V](bold mauve)"
+success_symbol = "[●](fg:blue bold)"
+error_symbol = "[●](fg:red bold)"
 
-[username]
-style_user = 'bold blue'
-style_root = 'bold red'
-format = '[󱗞 $user](fg:$style) '
+# ─── OS (small icon, only on foreign systems) ──────────────────
+[os]
 disabled = false
-show_always = true
+format = "[$symbol]($style) "
+style = "fg:subtext1"
+symbols = {
+    "Arch" = "󰣇"
+    "Debian" = "󰣚"
+    "Fedora" = "󰣛"
+    "Ubuntu" = "󰣈"
+    "Macos" = "󰀵"
+    "Linux" = "󰌽"
+}
 
+# ─── Username (only on remote or non-default user) ──────────────
+[username]
+show_always = false
+format = "[$user]($style)@"
+style_user = "blue"
+style_root = "red bold"
+
+# ─── Directory ─────────────────────────────────────────────────
 [directory]
-format = "[$path](bold $style)[$read_only]($read_only_style) "
-truncation_length = 2
-style = "fg:blue"
-read_only_style = "fg:subtext0"
-before_repo_root_style = "fg:subtext0"
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 3
 truncation_symbol = "…/"
-truncate_to_repo = true
+style = "fg:blue bold"
+read_only_style = "fg:red"
 read_only = "  "
+truncate_to_repo = true
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -86,69 +71,65 @@ read_only = "  "
 "Music" = " "
 "Pictures" = " "
 
-[cmd_duration]
-format = " took [ $duration]($style) "
-style = "bold fg:yellow"
-min_time = 500
-
+# ─── Git ──────────────────────────────────────────────────────
 [git_branch]
-format = "-> [$symbol$branch]($style) "
-style = "bold fg:mauve"
-symbol = " "
+format = "[$symbol$branch]($style) "
+symbol = ""
+style = "fg:mauve bold"
 
 [git_status]
-format = '[$all_status$ahead_behind ]($style)'
-style = "fg:text bg:surface0"
+format = "[$all_status$ahead_behind]($style)"
+style = "fg:red"
+modified = "!"
+staged = "+"
+untracked = "?"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
 
-[docker_context]
-disabled = true
-symbol = " "
+# ─── Command duration (only when > 2s) ────────────────────────
+[cmd_duration]
+format = "[$duration]($style) "
+style = "fg:yellow"
+min_time = 2_000
 
-[python]
-disabled = false
-format = "[$symbol$pyenv_prefix($version)( $virtualenv)](fg:peach)"
-symbol = " "
-version_format = "$raw"
-
-[java]
-format = '[[ $symbol ($version) ](fg:red)]($style)'
-version_format = "$raw"
-symbol = " "
-disabled = false
-
-[c]
-format = '[[ $symbol ($version) ](fg:blue)]($style)'
-symbol = " "
-version_format = "$raw"
-disabled = false
-
-[zig]
-format = '[[ $symbol ($version) ](fg:peach)]($style)'
-version_format = "$raw"
-disabled = false
-
-[bun]
-version_format = "$raw"
-format = '[[ $symbol ($version) ](fg:text)]($style)'
-disabled = false
-
-[nodejs]
-symbol = ""
-format = '[[ $symbol ($version) ](fg:green)]($style)'
-
-[rust]
-symbol = ""
-format = '[[ $symbol ($version) ](fg:red)]($style)'
-
-[golang]
-symbol = ""
-format = '[[ $symbol ($version) ](fg:teal)]($style)'
-
-[php]
-symbol = ""
-format = '[[ $symbol ($version) ](fg:peach)]($style)'
-
+# ─── Time (right-aligned via $fill) ───────────────────────────
 [time]
 disabled = false
+format = "[$time]($style) "
 time_format = "%R"
-format = '[[   $time ](fg:subtext0)]($style)'
+style = "fg:subtext1"
+
+# ─── Palette (matches kanagawa-wave) ───────────────────────────
+[palettes.ii]
+text          = "#dcd7ba"
+subtext0      = "#727169"
+subtext1      = "#a6a69c"
+overlay0      = "#363646"
+overlay1      = "#43436c"
+overlay2      = "#2a2a3a"
+surface0      = "#1f1f28"
+surface1      = "#16161d"
+surface2      = "#0e0e14"
+base          = "#1f1f28"
+mantle        = "#16161d"
+crust         = "#0e0e14"
+
+blue          = "#7fb4ca"
+mauve         = "#957fb8"
+purple        = "#b48ead"
+lavender      = "#9c89c8"
+pink          = "#c6797e"
+green         = "#98bb6c"
+red           = "#f7768e"
+yellow        = "#e0af68"
+orange        = "#ff9e64"
+peach         = "#e8a96a"
+teal          = "#7dc4c4"
+cyan          = "#7fb4ca"
+sapphire      = "#7aa2f7"
+sky           = "#a4d2eb"
+rosewater     = "#dcd7ba"
+flamingo      = "#e29d96"
+maroon        = "#7a5252"
+maroon_dark   = "#5a3a3a"
