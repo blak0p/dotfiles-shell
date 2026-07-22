@@ -148,6 +148,9 @@ else
     end
 end
 
+# User-local overrides (created by dotfiles-shell installer)
+if test -f ~/.config/fish.custom; source ~/.config/fish.custom; end
+
 clear
 
 # pnpm
