@@ -3,16 +3,16 @@
 # Original upstream: https://github.com/Gentleman-Programming/Gentleman.Dots
 # The palette name 'ii' and the overall styling are inspired by
 # Gentleman.Dots' Hyprland preset. This file is a minimal rewrite
-# that keeps only the modules actually used here, and adjusts the
-# character to ●.
+# that keeps only the modules actually used here.
 #
 # Layout (left to right):
 #   <os>  <username>@  <directory>  <git_branch><git_status>  …  <time>
-#   <●>
+#   <󱗞 >
 #
-# The ● character is a filled circle. Change to ○ (empty) or ◉
-# (with center dot) in the [character] section if you prefer a
-# different look.
+# The 󱗞 character is a Nerd Font glyph (white heavy check mark). It
+# requires a Nerd Font in your terminal to render correctly. Change
+# to ●, ➜, or ❯ in the [character] section if you prefer something
+# else.
 
 format = """
 $os\
@@ -32,22 +32,22 @@ palette = "ii"
 
 # ─── Character ─────────────────────────────────────────────────
 [character]
-success_symbol = "[●](fg:blue bold)"
-error_symbol = "[●](fg:red bold)"
+success_symbol = "[󱗞 ](fg:blue bold)"
+error_symbol = "[󱗞 ](fg:red bold)"
 
 # ─── OS (small icon, only on foreign systems) ──────────────────
 [os]
 disabled = false
 format = "[$symbol]($style) "
 style = "fg:subtext1"
-symbols = {
-    "Arch" = "󰣇"
-    "Debian" = "󰣚"
-    "Fedora" = "󰣛"
-    "Ubuntu" = "󰣈"
-    "Macos" = "󰀵"
-    "Linux" = "󰌽"
-}
+
+[os.symbols]
+Arch = "󰣇"
+Debian = "󰣚"
+Fedora = "󰣛"
+Ubuntu = "󰣈"
+Macos = "󰀵"
+Linux = "󰌽"
 
 # ─── Username (only on remote or non-default user) ──────────────
 [username]
