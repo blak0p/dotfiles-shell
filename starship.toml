@@ -1,9 +1,10 @@
 # starship.toml — dotfiles-shell's prompt config
 #
-# Original upstream: https://starship.rs/preset/catppuccin-powerline
-# and the default 'pastel' style. Layout, module set, and color
-# palette are inspired by those presets; this file is a minimal
-# rewrite that keeps only the modules actually used here.
+# Original upstream: https://github.com/Gentleman-Programming/Gentleman.Dots
+# The palette name 'ii' and the overall styling are inspired by
+# Gentleman.Dots' Hyprland preset. This file is a minimal rewrite
+# that keeps only the modules actually used here, and adjusts the
+# character to ●.
 #
 # Layout (left to right):
 #   <os>  <username>@  <directory>  <git_branch><git_status>  …  <time>
