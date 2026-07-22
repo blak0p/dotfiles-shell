@@ -6,7 +6,7 @@
 # that keeps only the modules actually used here.
 #
 # Layout (left to right):
-#   <os>  <username>@  <directory>  <git_branch><git_status>  …  <time>
+#   <os>  <username>@  <directory>  <git_branch><git_status>  <cmd_duration>
 #   <󱗞 >
 #
 # The 󱗞 character is a Nerd Font glyph (white heavy check mark). It
@@ -20,10 +20,7 @@ $username\
 $directory\
 $git_branch\
 $git_status\
-$fill\
-$cmd_duration\
-$time
-\
+$cmd_duration
 $character"""
 
 add_newline = true
@@ -32,7 +29,7 @@ palette = "ii"
 
 # ─── Character ─────────────────────────────────────────────────
 [character]
-success_symbol = "[󱗞 ](fg:blue bold)"
+success_symbol = "[󱗞 ](fg:green bold)"
 error_symbol = "[󱗞 ](fg:red bold)"
 
 # ─── OS (small icon, only on foreign systems) ──────────────────
