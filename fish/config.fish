@@ -1,4 +1,4 @@
-# Detectar si estamos en el bunker (distrobox) y setear BUNKER
+# Detectar si estamos en el dev container (distrobox) y setear BUNKER
 if test -n "$DISTROBOX_HOST_HOME"
     set -gx BUNKER 1
 end
@@ -133,8 +133,8 @@ set -g fish_pager_color_description $comment
 
 # Carga de configuraciones específicas según el dominio (Host vs Bunker)
 if set -q BUNKER
-    # Bunker: cargar todo lo que esté en config/fish/bunker/
-    for f in $HOME/.config/fish/bunker/*.fish
+    # Dev container: cargar todo lo que esté en config/fish/dev/
+    for f in $HOME/.config/fish/dev/*.fish
         if test -f $f
             source $f
         end

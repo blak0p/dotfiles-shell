@@ -1,5 +1,5 @@
 # Auto start Hyprland on tty1
-# Skip in bunker (distrobox) — no display manager there
+# Skip in dev container (distrobox) — no display manager there
 if set -q BUNKER
     return
 end
