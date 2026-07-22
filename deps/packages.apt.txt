@@ -1,0 +1,19 @@
+# Packages for the shell + terminal domain on Debian/Ubuntu.
+# Consume with: xargs -a deps/packages.apt.txt sudo apt install -y
+
+fish
+kitty
+starship
+carapace
+fastfetch
+fzf
+eza
+bat
+zoxide
+
+# Notes:
+# - atuin is not in Debian/Ubuntu official repos. Install via cargo:
+#     sudo apt install cargo
+#     cargo install atuin
+# - fisher (fish plugin manager) install AFTER fish:
+#     fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'

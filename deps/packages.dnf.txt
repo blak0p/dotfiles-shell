@@ -1,0 +1,21 @@
+# Packages for the shell + terminal domain on Fedora.
+# Consume with: xargs -a deps/packages.dnf.txt sudo dnf install -y
+
+fish
+kitty
+starship
+carapace
+fastfetch
+fzf
+eza
+bat
+zoxide
+
+# Notes:
+# - atuin is NOT in Fedora official repos. Install via:
+#     sudo dnf install cargo
+#     cargo install atuin
+#   Or grab a prebuilt binary from
+#   https://github.com/atuinsh/atuin/releases
+# - fisher (fish plugin manager) is a fish plugin, install AFTER fish:
+#     fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
