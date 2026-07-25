@@ -95,6 +95,8 @@ else
     alias ls='ls --color=auto'
 end
 
+alias sync-mem='cd /home/alejndro/dev/dotfiles/dotfiles-bunker && engram sync --all && git add .engram/ && git commit -m "sync engram memories" && git push'
+
 alias fzfbat='fzf --preview="bat --theme=gruvbox-dark --color=always {}"'
 alias fzfnvim='nvim (fzf --preview="bat --theme=gruvbox-dark --color=always {}")'
 
