@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# dotfiles-shell installer — symlinks fish starship.toml atuin carapace fastfetch kitty to ~/.config/.
+# dotfiles-shell installer — symlinks fish starship.toml atuin carapace fastfetch kitty herdr to ~/.config/.
 # Run standalone (clone this repo + ./install.sh) or via the umbrella.
 set -eEuo pipefail
 
@@ -46,9 +46,20 @@ deploy_configs() {
     done
 }
 
+deploy_herdr() {
+    local src="$REPO_ROOT/herdr/config.toml" dst="$HOME/.config/herdr/config.toml"
+    if [ ! -e "$src" ]; then
+        warn "Source not found, skipping: $src"
+        return 0
+    fi
+    mkdir -p "$HOME/.config/herdr"
+    deploy_symlink "$src" "$dst"
+}
+
 main() {
     info "Deploying dotfiles-shell configs from $REPO_ROOT"
     deploy_configs
+    deploy_herdr
     # Create ~/.config/fish.custom if absent (never overwrite)
     FISH_CUSTOM="$HOME/.config/fish.custom"
     if [ ! -f "$FISH_CUSTOM" ]; then

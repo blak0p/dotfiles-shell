@@ -1,6 +1,6 @@
 # dotfiles-shell
 
-Shell + terminal config: `fish/`, `starship.toml`, `atuin/`, `carapace/`, `fastfetch/`, `kitty/`.
+Shell + terminal config: `fish/`, `starship.toml`, `atuin/`, `carapace/`, `fastfetch/`, `kitty/`, `herdr/`.
 
 Part of the [dotfiles umbrella](https://github.com/blak0p/dotfiles).
 
@@ -27,6 +27,7 @@ Part of the [dotfiles umbrella](https://github.com/blak0p/dotfiles).
 | `~/.config/carapace` | Multi-shell completions |
 | `~/.config/fastfetch` | System info on shell start |
 | `~/.config/kitty` | Kitty terminal emulator (with native cursor trail) |
+| `~/.config/herdr/config.toml` | Herdr agent multiplexer (theme, accent, tmux-style keys) — only the config file, runtime state stays local |
 
 Plus, the installer **creates** (not symlinks) `~/.config/fish.custom` on first run. See [fish.custom](#fishcustom--private-config).
 
@@ -81,7 +82,7 @@ Backups of any pre-existing real configs are kept at `~/.dotfiles-backup-YYYYMMD
 
 ```bash
 # Remove symlinks
-for s in fish starship.toml atuin carapace fastfetch kitty; do
+for s in fish starship.toml atuin carapace fastfetch kitty herdr; do
     rm -f ~/.config/$s
 done
 
@@ -124,6 +125,7 @@ The most common edits:
 - **Change the prompt**: edit `fish/config.fish` (the starship init line) or `starship.toml` directly
 - **Change kitty theme**: edit `kitty/kitty.conf`
 - **Change keybinds**: edit `fish/conf.d/zzz-custom-binds.fish`
+- **Change herdr theme/keys**: edit `herdr/config.toml` (prefix, agent navigation, accent colors)
 
 After editing `config.fish`:
 
