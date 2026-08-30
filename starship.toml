@@ -15,7 +15,6 @@
 # else.
 
 format = """
-$username\
 $directory\
 $git_branch\
 $git_status\
@@ -28,8 +27,8 @@ palette = "ii"
 
 # ─── Character ─────────────────────────────────────────────────
 [character]
-success_symbol = "[󱗞 ](fg:green bold)"
-error_symbol = "[󱗞 ](fg:red bold)"
+success_symbol = "[❯](fg:green bold) "
+error_symbol = "[❯](fg:red bold) "
 
 # ─── OS (disabled — uses Nerd Font glyphs that not all fonts have) ─
 [os]
@@ -45,23 +44,18 @@ style_root = "red bold"
 # ─── Directory ─────────────────────────────────────────────────
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style) "
-truncation_length = 3
+home_symbol = "~"
+truncation_length = 5
 truncation_symbol = "…/"
 style = "fg:blue bold"
 read_only_style = "fg:red"
-read_only = "  "
-truncate_to_repo = true
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+read_only = " 󰌾 "
+truncate_to_repo = false
 
 # ─── Git ──────────────────────────────────────────────────────
 [git_branch]
 format = "[$symbol$branch]($style) "
-symbol = ""
+symbol = " "
 style = "fg:mauve bold"
 
 [git_status]
