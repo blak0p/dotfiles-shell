@@ -7,7 +7,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     # Install Fisher if not installed
     if not functions -q fisher
-        curl -sL https://git.io/fisher | source
+        curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
         fisher install jorgebucaran/fisher
     end
 
@@ -94,8 +94,6 @@ if test (uname) = Darwin
 else
     alias ls='ls --color=auto'
 end
-
-alias sync-mem='cd /home/alejndro/dev/dotfiles/dotfiles-bunker && engram sync --all && git add .engram/ && git commit -m "sync engram memories" && git push'
 
 alias fzfbat='fzf --preview="bat --theme=gruvbox-dark --color=always {}"'
 alias fzfnvim='nvim (fzf --preview="bat --theme=gruvbox-dark --color=always {}")'
