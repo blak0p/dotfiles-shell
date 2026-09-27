@@ -154,8 +154,17 @@ if test -f ~/.config/fish.custom; source ~/.config/fish.custom; end
 clear
 
 # pnpm
-set -gx PNPM_HOME "$HOME/dev/.container/.local/share/pnpm"
+if set -q BUNKER
+  set -gx PNPM_HOME "$HOME/dev/.container/.local/share/pnpm"
+else
+  set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+end
 if not string match -q -- "$PNPM_HOME/bin" $PATH
   set -gx PATH "$PNPM_HOME/bin" $PATH
 end
 # pnpm end
+fish_add_path $HOME/bin
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/alejandro/.local/bin" $PATH
