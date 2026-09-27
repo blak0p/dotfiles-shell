@@ -20,13 +20,14 @@ yellow = "#DEBA87"
 [ui]
 accent = "#6FA0AF"
 show_agent_labels_on_pane_borders = true
-agent_panel_sort = "priority"
+agent_panel_sort = "spaces"
 
+status_indicators = "symbols"
 [ui.sound]
 enabled = true
 
 [ui.toast]
-delivery = "herdr"
+delivery = "system"
 
 [keys]
 # Match tmux/Zellij-style prefix muscle memory.
